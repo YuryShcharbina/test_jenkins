@@ -8,7 +8,6 @@
 	<name>Hello World Web Application Repository</name>
 	<description>Simplest possible Java Webapp</description>
 
-<<<<<<< HEAD
 	<build>
 		<plugins>
 			<plugin>
@@ -28,37 +27,3 @@
 	</build>
 
 </project>
-=======
-  <groupId>com.coveros.demo</groupId>
-  <artifactId>helloworld</artifactId>
-  <version>1.1</version>
-  <packaging>war</packaging>
-
-  <name>Hello World</name>
-  <description>The most basic of Java programs.</description>
-  <url>https://www.coveros.com/</url>
-  <inceptionYear>2018</inceptionYear>
-
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <jdk.version>1.8</jdk.version>
-
-    <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
-  </properties>
-
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>${maven.compiler.plugin.version}</version>
-        <configuration>
-          <source>${jdk.version}</source>
-          <target>${jdk.version}</target>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
-</project>
->>>>>>> 20d32969852dc7b678b6fc43aad6f622dc586291
