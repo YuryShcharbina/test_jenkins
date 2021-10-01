@@ -1,6 +1,5 @@
-# IntelliJ Idea
-/.idea
-/*.iml
-
-# Maven
+/bin
 /target
+.classpath
+.project
+.settings
