@@ -10,4 +10,8 @@
 	<p>
 		You are coming from 
 		<%= request.getRemoteAddr()  %></p>
+  <p>
+    String state = "first"; 
+        if ("first".equals(state)) { 
+  </p>
 </body>
