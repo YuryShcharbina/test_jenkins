@@ -1,0 +1,92 @@
+services:
+  web:
+    build:
+      context: ./nginx
+    container_name: web
+    ports:
+      - "80:80"
+    networks:
+      - jenkins_net
+    deploy:    
+      restart_policy:
+        condition: on-failure
+    depends_on:
+      - jenkins
+      - sonarqube
+      - application
+      - artifactory  
+
+  application:
+    build:
+      context: ./tomcat
+    container_name: application
+    ports:
+      - "8080"
+    networks:
+      - jenkins_net
+    volumes:
+      - webapps:/usr/local/tomcat/webapps    
+    deploy:
+      restart_policy:
+        condition: on-failure
+
+  jenkins:
+    build:
+      context: ./jenkins
+    container_name: jenkins
+    ports:
+      - "8080"
+      - "50000"
+    environment:
+      - JENKINS_OPTS="--prefix=/jenkins"
+    env_file: .env.jenkins  
+    networks:
+      - jenkins_net
+    volumes:
+      - jenkins-data:/var/jenkins_home
+      - webapps:/var/jenkins_home/webapps
+    deploy:
+      restart_policy:
+        condition: on-failure
+
+  sonarqube:
+    build:
+      context: ./sonarqube
+    container_name: sonarqube
+    ports:
+      - "9000"
+    networks:
+      - jenkins_net
+    volumes:
+      - sonarqube-data:/opt/sonarqube/data
+      - sonarqube-logs:/opt/sonarqube/logs
+      - sonarqube-extentions:/opt/sonarqube/extentions
+    deploy:  
+      restart_policy:
+        condition: on-failure
+  
+  artifactory:
+    build:
+      context: ./artifactory
+    container_name: artifactory
+    ports:
+      - "8081"
+      - "8082"
+    networks:
+      - jenkins_net
+    volumes:
+      - artifactory-data:/var/opt/jfrog/artifactory
+    deploy:
+      restart_policy:
+        condition: on-failure  
+
+volumes:
+  jenkins-data:
+  sonarqube-data:
+  sonarqube-logs:
+  sonarqube-extentions:
+  artifactory-data:
+  webapps:
+
+networks:
+  jenkins_net:

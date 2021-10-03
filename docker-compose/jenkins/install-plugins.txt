@@ -1,0 +1,9 @@
+git:4.8.2
+ssh:2.6.1
+ssh-agent:1.23
+maven-plugin:3.12
+pipeline-maven:3.10.0
+sonar:2.13.1
+artifactory:3.13.2
+deploy:1.16
+publish-over-ssh:1.22
