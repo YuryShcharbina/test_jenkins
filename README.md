@@ -20,8 +20,7 @@ In docker-compose creates stack for deploy simple java application:
 `http://example.com/sonarqube` - Sonarqube  
 `http://repo.example.com` - Artifactory  
 
-### Environment Variables for docker-compose
-This pipeline uses next environment variables: 
+### Environment Variables for docker-compose  
 * for Jenkins:  
 `JENKINS_USER`  - user for Jenkins container  
 `JENKINS_PASS` - password for Jenkins user  
