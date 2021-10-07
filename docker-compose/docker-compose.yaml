@@ -22,10 +22,9 @@ services:
     container_name: application
     ports:
       - "8080"
+    env_file: .env.tomcat    
     networks:
       - jenkins_net
-    volumes:
-      - webapps:/usr/local/tomcat/webapps    
     deploy:
       restart_policy:
         condition: on-failure
@@ -44,7 +43,6 @@ services:
       - jenkins_net
     volumes:
       - jenkins-data:/var/jenkins_home
-      - webapps:/var/jenkins_home/webapps
     deploy:
       restart_policy:
         condition: on-failure
@@ -86,7 +84,6 @@ volumes:
   sonarqube-logs:
   sonarqube-extentions:
   artifactory-data:
-  webapps:
 
 networks:
   jenkins_net:
